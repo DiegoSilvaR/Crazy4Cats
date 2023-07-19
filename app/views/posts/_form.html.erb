@@ -1,0 +1,35 @@
+<%= form_with(model: post, class: "form") do |form| %>
+  <% if post.errors.any? %>
+    <div class="alert alert-danger">
+      <h2><%= pluralize(post.errors.count, "error") %> No puedes editar</h2>
+
+      <ul>
+        <% post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :image, "Imagen", class: "form-label fs-5 fw-bold text-light" %>
+    <%= form.text_field :image, class: "form-control rounded-pill" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :title, "Titulo", class: "form-label fs-5 fw-bold text-light" %>
+    <%= form.text_field :title, class: "form-control rounded-pill" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :description, "Descripcion", class: "form-label fs-5 fw-bold text-light" %>
+    <%= form.text_area :description, class: "form-control " %>
+  </div>
+
+
+  <%= form.label :user_id, "Usuario", class: "form-label fs-5 fw-bold text-light" %>
+  <div class="input-group">
+     <%= form.text_field :user_id, class: "form-control rounded-0 rounded-end rounded-pill" %>
+    <%= form.submit "Crear Aventura", class: " btn btn-primary glow-on-hover rounded-0 rounded-start rounded-pill bg-primary " %>
+  </div>
+<% end %>

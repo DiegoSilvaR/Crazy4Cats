@@ -1,0 +1,35 @@
+<p style="color: green"><%= notice %></p>
+<div class="d-flex justify-content-center align-items-center" style="height: 80vh;">
+  <div class="p-3 rounded-3 glass2  w-100">
+    <div class="card-body">
+      <h1 class="card-title text-warning">Likes</h1>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead class="table-dark">
+            <tr>
+              <th>ID</th>
+              <th>Contenido</th>
+              <th>Usuario</th>
+              <th>Detalles</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @likes.each do |like| %>
+              <tr>
+                <td><%= like.id %></td>
+                <td><%= like.post.id %></td>
+                <td><%= like.user.name %></td>
+                <td><%= link_to "", like, class: "fa-sharp fa-solid fa-eye text-decoration-none" %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <%= link_to "Volver a Aventuras", posts_path, class: "btn btn-primary glow-on-hover bg-primary" %>
+
+    </div>
+  </div>
+</div>
+
+
+

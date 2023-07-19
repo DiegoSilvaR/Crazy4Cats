@@ -1,0 +1,21 @@
+
+<p class="text-success"><%= notice %></p>
+
+<div class="row justify-content-center align-items-center" style="height: 80vh;">
+  <div class="col-lg-6 col-md-8 col-sm-10">
+    <div class="p-3 rounded-3 shadow glass2">
+    <div class="card-body">
+    <h1 class="card-title text-success">Like</h1>
+    <%= render @like %>
+  </div>
+<div class="input-group justify-content-center align-items-center">
+  <%= link_to "Editar este like", edit_like_path(@like), class: "btn btn-primary" %>
+  <%= link_to "Volver a Likes", likes_path, class: "btn btn-warning" %>
+  <%= button_to "Eliminar este like", @like, method: :delete, data: { confirm: "¿Estás seguro de que deseas eliminar este like?" }, class: "btn btn-danger rounded-0 rounded-end" %>
+</div>
+    </div>
+  </div>
+</div>
+
+
+

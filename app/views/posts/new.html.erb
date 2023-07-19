@@ -1,0 +1,15 @@
+<div class="row justify-content-center align-items-center" style="height: 80vh;">
+  <div class="col-lg-6 col-md-8 col-sm-10">
+    <div class=" glass p-4 rounded-4 shadow-lg">
+      <div class="card-body">
+<h1 class="card-title text-center text-warning">Nuevo post</h1>
+<%= render "form", post: @post %>
+
+<div class="text-center mt-3">
+  <%= link_to "Volver a posts", posts_path, class: "btn btn-warning" %>
+</div>
+      </div>
+    </div>
+  </div>
+</div>
+

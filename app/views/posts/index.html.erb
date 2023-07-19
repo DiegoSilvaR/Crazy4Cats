@@ -1,0 +1,58 @@
+<p class="text-success"><%= notice %></p>
+<div class="d-flex justify-content-between m-3" >
+<h1 class="text-warning m-0" >AVENTURAS :3</h1>
+<%= link_to "Nueva Aventura", new_post_path, class:"btn btn-danger glow-on-hover rounded-pill shadow fw-bold fs-5", style:"background-color:#0dcaf0" %>
+</div>
+<div class="row">
+  <% @posts.each do |post| %>
+    <div class="col-12 col-md-6 col-lg-4 mb-3">
+      <div class="card glow-on-hover bg-transparent border-0 shadow glass" style="min-height: 100%">
+        <div class="p-2 rounded-top header glass2 text-light">
+          <h2 class="card-title text-light"><%= post.title %></h2>
+        </div>
+        <div class="card-body glass">
+          <div>
+            <%= image_tag post.image, class:"rounded ", style: "width: 100%; min-height:100%;" %>
+          </div>
+        </div>
+        <div class="card-scrollable-comments scrollbar-danger p-1 glass" style="max-height: 150px; overflow-y: auto;">
+          <% post.comments.each do |comment| %>
+            <div class="comment bg-warning bg-opacity-75 bg-gradient p-1 m-2 rounded shadow">
+              <p class="comment-content text-dark"><%= comment.content %></p>
+              <p class="comment-info text-secondary" style="font-size:12px;">
+                Autor: <%= comment.user.name %>
+                el <%= comment.created_at.strftime("%d/%m/%Y a las %H:%M") %>
+              </p>
+            </div>
+          <% end %>
+        </div>
+        <div class="card-comment-form glass justify-content-between">
+          <%= form_with(model: [post, Comment.new], url: comments_path, local: true) do |form| %>
+            <%= form.hidden_field :post_id, value: post.id %>
+            <div class="field px-3 py-2">
+              <%= form.text_area :content, rows: 2, style: "resize: none;", class: "form-control p-1 text-light bg-opacity-75 border-0 rounded bg-secondary", placeholder: "Escribe tu comentario" %>
+            </div>
+            <div class="text-center">
+              <%= form.submit "Comentar", class: "col-3 btn btn-primary btn-sm rounded-pill shadow mb-2" %>
+            </div>
+          <% end %>
+            <%= form_with(model: [post, Like.new], url: likes_path, local: true) do |form| %>
+            <%= form.hidden_field :post_id, value: post.id %>
+            <div class="text-center">
+            <%= form.submit "Dar Like", class: "col-3 btn btn-primary btn-sm rounded-pill shadow mb-2" %>
+           </div>
+          <% end %>
+        </div>
+        <div class="p-2 footer glass2 rounded-bottom d-flex justify-content-between  text-warning"; style="font-size:12px">
+          <%= time_ago_in_words(post.created_at, locale: :es) %>
+          <%= link_to "Ver Articulo", post, class: "text-light text-center" %>
+          <div class="input-group justify-content-end w-25" style="font-size:22px">
+          <%= pluralize(post.total_likes, '') %>
+          <i class="fa-solid fa-heart text-danger fa-1x"></i>
+        </div>
+
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

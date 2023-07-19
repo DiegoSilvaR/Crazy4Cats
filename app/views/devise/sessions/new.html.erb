@@ -1,0 +1,39 @@
+<div class="row justify-content-center align-items-center" style="height: 80vh;">
+  <div class="col-12 col-md-4">
+    <div class="card bg-transparent border-0">
+      <div class="card-body  glass2 rounded rounded-3 shadow ">
+      <div class="d-flex justify-content-center">
+      <i class="fa-solid fa-paw text-warning fa-2x me-3" ></i>
+        <h2 class="card-title text-center text-light">Crazy4Cats</h2>
+      </div>
+
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="field">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control rounded-pill" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :password %><br />
+            <%= f.password_field :password, autocomplete: "current-password", class: "form-control rounded-pill" %>
+          </div>
+
+          <% if devise_mapping.rememberable? %>
+            <div class="field">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me, "Recordar Contraseña" %>
+            </div>
+          <% end %>
+
+          <div class="actions text-center">
+            <%= f.submit "Ingresar", class: "btn shadow glow-on-hover bg-gradient btn-outline-dark rounded-pill m-3" %>
+          </div>
+        <% end %>
+        <div class="text-white justify-content-center text-center">
+          <%= render "devise/shared/links", class:"text-light px-3" %>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

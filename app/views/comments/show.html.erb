@@ -1,0 +1,18 @@
+<p class="text-success"><%= notice %></p>
+<div class="row justify-content-center align-items-center" style="height: 80vh;">
+  <div class="col-lg-6 col-md-8 col-sm-10">
+<div class="p-3 rounded-3 shadow glass2">
+  <div class="card-body">
+    <h1 class="card-title text-center text-warning">Comentario</h1>
+    <%= render @comment %>
+
+
+<div class="text-center justify-content-center input-group mt-3">
+  <%= link_to "Editar este comentario", edit_comment_path(@comment), class: "btn btn-primary" %>
+  <%= link_to "Volver a Comentarios", comments_path, class: "btn btn-warning" %>
+  <%= button_to "Eliminar este comentario", @comment, method: :delete, data: { confirm: "¿Estás seguro de que deseas eliminar este comentario?" }, class: "btn btn-danger rounded-0 rounded-end" %>
+</div>
+ </div>
+</div>
+  </div>
+</div>

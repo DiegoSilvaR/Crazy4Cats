@@ -1,0 +1,32 @@
+<%= form_with(model: comment, class: "form") do |form| %>
+  <% if comment.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(comment.errors.count, "error") %> impidieron que este comentario se guardara:</h2>
+
+      <ul>
+        <% comment.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :content, "Contenido", class: "form-label", style: "display: block" %>
+    <%= form.text_area :content, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :user_id, "Usuario", class: "form-label", style: "display: block" %>
+    <%= form.text_field :user_id, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :post_id, "Publicación", class: "form-label", style: "display: block" %>
+    <%= form.text_field :post_id, class: "form-control" %>
+  </div>
+
+  <div class="text-center">
+    <%= form.submit "Guardar", class: "btn btn-primary" %>
+  </div>
+<% end %>

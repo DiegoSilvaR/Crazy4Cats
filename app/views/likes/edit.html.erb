@@ -1,0 +1,16 @@
+<div class="row justify-content-center align-items-center" style="height: 80vh;">
+  <div class="col-lg-6 col-md-8 col-sm-10">
+    <div class="p-3 rounded-3 shadow glass2">
+      <div class="card-body">
+        <h1 class="card-title text-center text-warning">Editar Like</h1>
+
+        <%= render "form", like: @like %>
+
+        <div class="text-center justify-content-center input-group mt-3">
+          <%= link_to "Ver Likes", @like, class: "btn btn-primary" %>
+          <%= link_to "Volver a Likes", likes_path, class: "btn btn-warning" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg sticky-top glass2 shadow-lg" data-bs-theme="dark">
+  <div class="container">
+    <i class="fa-solid fa-paw text-warning fa-4x me-3" ></i>
+    <%= link_to 'Crazy4Cats', root_path, class: 'navbar-brand fs-2 fw-bold text-light' %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <%= link_to 'Aventuras', posts_path, class: 'nav-link' %>
+        </li>
+        <% if user_signed_in? && current_user.admin? %>
+          <li class="nav-item">
+            <%= link_to 'Comentarios', comments_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Likes', likes_path, class: 'nav-link' %>
+          </li>
+        <% end %>
+      </ul>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle <%= "text-warning" if user_signed_in? %>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <% if user_signed_in? %>
+              <% if current_user.name.present? %>
+                Bienvenid@ <%= current_user.name %>
+              <% else %>
+                Bienvenid@ <%= current_user.email %>
+              <% end %>
+              <% if current_user.admin? %>
+                - Admin
+              <% elsif current_user.author? %>
+                - Author
+              <% else %>
+                - Normal User
+              <% end %>
+            <% else %>
+              Inicia sesión o regístrate
+            <% end %>
+          </a>
+          <ul class="dropdown-menu ms-auto">
+            <% if user_signed_in? %>
+              <li><%= button_to "Cerrar Sesión", destroy_user_session_path, class: "dropdown-item", method: :delete %></li>
+            <% else %>
+              <li><%= link_to "Iniciar Sesión", new_user_session_path, class: "dropdown-item" %></li>
+              <li><%= link_to "Registro", new_user_registration_path, class: "dropdown-item" %></li>
+            <% end %>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+

@@ -1,0 +1,20 @@
+<p class="text-success"><%= notice %></p>
+<div class="row justify-content-center align-items-center mt-5">
+  <div class="col-lg-5 col-md-8 col-sm-10">
+    <div id="<%= dom_id(post) %>" class="glass p-3 rounded-3 shadow  mb-3">
+      <div class="glow-on-hover">
+ <p>
+          <%= image_tag(post.image, style: "max-width: 100%;", class: "img-fluid rounded") %>
+        </p>
+  <p>
+    <strong>Titulo:</strong>
+    <%= post.title %>
+  </p>
+  <p>
+    <strong>Usuario:</strong>
+    <%= post.user.name %>
+  </p>
+</div>
+    </div>
+  </div>
+</div>

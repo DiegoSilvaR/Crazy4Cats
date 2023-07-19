@@ -1,0 +1,11 @@
+
+<div class="row justify-content-center align-items-center mt-5">
+<%= render @post %>
+
+  <div class="input-group justify-content-center shadow">
+    <%= link_to "Editar Reporte", edit_post_path(@post), class: "btn btn-primary" %>
+    <%= link_to "Volver a Reportes", posts_path, class: "btn btn-warning" %>
+    <%= button_to "Eliminar Reporte", @post, method: :delete, class: "btn btn-primary rounded-0 rounded-end" %>
+  </div>
+</div>
+
